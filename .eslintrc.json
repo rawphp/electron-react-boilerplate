@@ -1,10 +1,46 @@
 {
-  "extends": "erb",
+  "extends": "plugin:react/recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "browser": true,
+    "es6": true
+  },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "webpack": {
         "config": "configs/webpack.config.eslint.js"
       }
     }
-  }
+  },
+  "rules": {
+    "jsx-quotes": ["error"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "allowArrowFunctions": true,
+        "allowBind": false,
+        "ignoreRefs": true
+      }
+    ],
+    "react/no-did-update-set-state": "error",
+    "react/no-unknown-property": "error",
+    "react/no-unused-prop-types": "error",
+    "react/prop-types": "error",
+    "react/react-in-jsx-scope": "error"
+  },
+  "plugins": ["react"]
 }
