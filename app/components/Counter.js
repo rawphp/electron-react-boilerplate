@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './Counter.css';
 import routes from '../constants/routes';
 
-const Counter = () => {
+const Counter = (props) => {
   const {
     increment,
     incrementIfOdd,
     incrementAsync,
     decrement,
     counter
-  } = this.props;
+  } = props;
 
   return (
     <div>
@@ -58,6 +59,14 @@ const Counter = () => {
       </div>
     </div>
   );
+};
+
+Counter.propTypes = {
+  increment: PropTypes.func.isRequired,
+  incrementIfOdd: PropTypes.func.isRequired,
+  incrementAsync: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
 };
 
 export default Counter;

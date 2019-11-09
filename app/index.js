@@ -7,6 +7,8 @@ import './app.global.css';
 
 const store = configureStore();
 
+console.log('......>>>>', typeof store);
+
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
 render(
