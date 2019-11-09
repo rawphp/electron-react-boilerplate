@@ -1,8 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const App = ({children}) => {
-  return <React.Fragment>{children}</React.Fragment>;
+  return (
+    <>
+    {children}
+    </>
+  );
 };
 
 App.propTypes = {
