@@ -1,17 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as actions from '../actions/counter';
 import styles from './Counter.css';
-import routes from '../constants/routes';
+import routes from '../routes.json';
 
-const Counter = (props) => {
-  const {
-    increment,
-    incrementIfOdd,
-    incrementAsync,
-    decrement,
-    counter
-  } = props;
+const Counter = ({ counter }) => {
+  const dispatch = useDispatch();
+
+  const increment = () => {
+    dispatch(actions.increment());
+  };
+
+  const decrement = () => {
+    dispatch(actions.decrement());
+  };
+
+  const incrementAsync = (delay = 1000) => {
+    setTimeout(() => {
+      dispatch(actions.increment());
+    }, delay);
+  };
+
+  const incrementIfOdd = () => {
+    if (counter % 2 === 0) {
+      return;
+    }
+
+    dispatch(actions.increment());
+  };
 
   return (
     <div>
@@ -50,7 +68,7 @@ const Counter = (props) => {
         </button>
         <button
           className={styles.btn}
-          onClick={() => incrementAsync()}
+          onClick={incrementAsync}
           data-tclass="btn"
           type="button"
         >
@@ -62,10 +80,6 @@ const Counter = (props) => {
 };
 
 Counter.propTypes = {
-  increment: PropTypes.func.isRequired,
-  incrementIfOdd: PropTypes.func.isRequired,
-  incrementAsync: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
 };
 
